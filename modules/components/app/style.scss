@@ -1,7 +1,9 @@
+@import '../style-consts.scss';
+
 h1 {
-    color: #555;
+    color: $color-main;
 }
 
 a {
-    color: #07a;
+    color: $color-3;
 }
