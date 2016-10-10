@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './style.scss'
+
 export default class LazyLoad extends React.Component {
   render() {
     return (

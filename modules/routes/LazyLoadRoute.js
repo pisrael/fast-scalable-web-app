@@ -1,4 +1,4 @@
-import LazyLoad from '../components/LazyLoad'
+import LazyLoad from '../components/lazyload'
 
 export default {
   path: 'lazyload',

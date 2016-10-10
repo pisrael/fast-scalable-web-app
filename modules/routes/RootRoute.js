@@ -1,5 +1,5 @@
-import App from '../components/App'
-import Index from '../components/Index'
+import App from '../components/app'
+import Index from '../components/index'
 
 export default {
   path: '/',

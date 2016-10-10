@@ -24,6 +24,7 @@ function renderPage(appHtml, preloadedState) {
       <head>
         <meta charset="utf-8"/>
         <title>My Fast App</title>
+        <link href="/main.css" rel="stylesheet"/>
       </head>
       <body>
         <div id="app">${appHtml}</div>
