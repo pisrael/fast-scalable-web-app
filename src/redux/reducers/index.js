@@ -1,6 +1,6 @@
 const Actions = require('../actions')
 
-function fetchItems (state = {}, action) {
+function rootReducer (state = {}, action) {
     switch (action.type) {
         case Actions.types.FETCH_ITEMS:
             return Object.assign({}, state, {
@@ -14,4 +14,4 @@ function fetchItems (state = {}, action) {
     }
 }
 
-module.exports = fetchItems 
+module.exports = rootReducer 

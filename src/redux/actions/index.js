@@ -35,6 +35,13 @@ function errorFetchingItems(msg) {
     }
 }
 
+function fetchItemsFromServer() {
+    return dispatch => {
+        const items = require('../../api/controllers/search').search()
+        return dispatch(receiveItems(items))
+    }
+}
+
 function fetchItems() {
     return dispatch => {
         return fetch('/api/search', { method: 'POST' })
@@ -66,5 +73,6 @@ module.exports = {
     receiveItems,
     errorFetchingItems,
     fetchItems,
-    fetchItemsIfNeeded
+    fetchItemsIfNeeded,
+    fetchItemsFromServer
 }

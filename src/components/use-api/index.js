@@ -1,8 +1,13 @@
 import React, {Component, PropTypes} from 'react'
 import { connect } from 'react-redux'
-import { fetchItemsIfNeeded } from '../../redux/actions'
+import { fetchItemsIfNeeded, fetchItemsFromServer } from '../../redux/actions'
 
 export class UseAPI extends Component {
+
+    static fetchData(store) {
+        return store.dispatch(fetchItemsFromServer())
+    }
+
     constructor(props) {
         super(props)
     }

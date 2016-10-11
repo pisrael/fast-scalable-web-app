@@ -27,7 +27,8 @@ app.get("/*", function (req, res) {
         } else if (redirect) {
             res.redirect(redirect.pathname + redirect.search)
         } else if (props) {
-            res.send(handleServerRender(props))
+            handleServerRender(props)
+            .then(html => res.send(html))
         } else {
             res.status(404).send('Not Found')
         }

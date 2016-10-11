@@ -6,14 +6,24 @@ const configureStore = require('./redux/store/configureStore')
 
 
 const handleServerRender = (props) => {
+
   //creates a new state object
   const store = configureStore()
 
-  //renders the app
-  const appHtml = ReactDOMServer.renderToString(Provider({ store }, RouterContext(Object.assign({}, props))))
+  //apply reducers on the initial state to produce the preloaded state
+  return props.components.reduce((promise, component) => {
+    if (component.fetchData) {
+      return promise.then(() => component.fetchData(store))
+    }
+    return promise
+  }, Promise.resolve())
+  .then(() => {
+      //renders the app
+      const appHtml = ReactDOMServer.renderToString(Provider({ store }, RouterContext(Object.assign({}, props))))
 
-  //passes the preloaded state
-  return renderPage(appHtml, store.getState())
+      //passes the preloaded state
+      return renderPage(appHtml, store.getState())
+  })
 }
 
 function renderPage(appHtml, preloadedState) {
