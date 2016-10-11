@@ -6,18 +6,18 @@ const configureStore = require('./redux/store/configureStore')
 
 
 const handleServerRender = (props) => {
-    //creates a new state object
-    const store = configureStore()
+  //creates a new state object
+  const store = configureStore()
 
-    //renders the app
-    const appHtml = ReactDOMServer.renderToString(Provider({ store }, RouterContext(Object.assign({}, props))))
+  //renders the app
+  const appHtml = ReactDOMServer.renderToString(Provider({ store }, RouterContext(Object.assign({}, props))))
 
-    //passes the preloaded state
-    return renderPage(appHtml, store.getState())
+  //passes the preloaded state
+  return renderPage(appHtml, store.getState())
 }
 
 function renderPage(appHtml, preloadedState) {
-    return `
+  return `
     <!doctype html>
     <html>
       <head>
@@ -30,11 +30,26 @@ function renderPage(appHtml, preloadedState) {
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
         </script>
-        <script src="/bundle.js"></script>
+        <script>
+          function ready(fn) {
+            if (document.readyState != 'loading') {
+              fn();
+            } else {
+              document.addEventListener('DOMContentLoaded', fn);
+            }
+          }
+
+          ready(function () {
+            var newscript = document.createElement('script');
+            newscript.type = 'text/javascript';
+            newscript.async = true;
+            newscript.src = '/bundle.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(newscript);
+          })
+        </script>
       </body>
     </html>
     `
 }
-
 
 module.exports = handleServerRender
