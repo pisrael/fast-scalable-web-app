@@ -7,10 +7,11 @@ const configureStore = require('./redux/store/configureStore')
 
 const handleServerRender = (props) => {
 
-  //creates a new state object
+  //creates a new store object
   const store = configureStore()
 
-  //apply reducers on the initial state to produce the preloaded state
+  //dispatch actions on the initial state to produce the preloaded state
+  //results are chained in promises
   return props.components.reduce((promise, component) => {
     if (component.fetchData) {
       return promise.then(() => component.fetchData(store))
