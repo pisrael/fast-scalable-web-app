@@ -6,7 +6,8 @@ const React = require('react')
 
 const ReactRouter = require('react-router')
 const handleServerRender = require('./handleServerRender')
-const routes = require('./server.routes.bundle').default;
+const pageRoutes = require('./server.routes.bundle').default;
+const apiRoutes = require('./api/routes')
 
 var app = express()
 app.use(compression())
@@ -14,11 +15,13 @@ app.use(compression())
 // serve our static stuff
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
+// serve api
+app.use('/api', apiRoutes)
 
 // send all requests to index.html so browserHistory in React Router works
-app.get("*", function (req, res) {
+app.get("/*", function (req, res) {
     // match the routes to the url
-    ReactRouter.match({ routes: routes, location: req.url }, (err, redirect, props) => {
+    ReactRouter.match({ routes: pageRoutes, location: req.url }, (err, redirect, props) => {
         if (err) {
             res.status(500).send(err.message)
         } else if (redirect) {

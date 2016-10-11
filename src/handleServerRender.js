@@ -2,13 +2,12 @@ const React = require('react')
 const Provider = React.createFactory(require('react-redux').Provider)
 const RouterContext = React.createFactory(require('react-router').RouterContext)
 const ReactDOMServer = require('react-dom/server')
-const Redux = require('redux')
-const reducer = require('./reducers')
+const configureStore = require('./redux/store/configureStore')
 
 
 const handleServerRender = (props) => {
     //creates a new state object
-    const store = Redux.createStore(reducer)
+    const store = configureStore()
 
     //renders the app
     const appHtml = ReactDOMServer.renderToString(Provider({ store }, RouterContext(Object.assign({}, props))))

@@ -1,14 +1,13 @@
 import React from 'react'
 import { match, Router } from 'react-router'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { createHistory } from 'history'
 import routes from './routes/RootRoute'
-import reducer from './reducers/index'
+import configureStore from './redux/store/configureStore'
 
 //creates the store using the preloaded state sent from the server at window._PRELOADED_STATE_
-let store = createStore(reducer, window.__PRELOADED_STATE__)
+let store = configureStore(window.__PRELOADED_STATE__)
 
 const { pathname, search, hash } = window.location
 const location = `${pathname}${search}${hash}`

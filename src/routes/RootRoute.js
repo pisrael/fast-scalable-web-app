@@ -8,6 +8,9 @@ export default {
     require.ensure([], (require) => {
       cb(null, [require('./LazyLoadRoute').default])
     })
+    require.ensure([], (require) => {
+      cb(null, [require('./APIRoute').default])
+    })
   },
   indexRoute: {
     component: Index

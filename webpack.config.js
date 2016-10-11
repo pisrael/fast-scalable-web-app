@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = [
   //configuration for the client
   {
-    entry: './modules/client.js',
+    entry: './src/client.js',
 
     output: {
       path: path.join(__dirname, 'public'),
@@ -33,7 +33,7 @@ module.exports = [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
-        compressor: { warnings: false },
+        compressor: { warnings: false }
       }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
@@ -44,10 +44,10 @@ module.exports = [
   //configuration for the server-side rendering of routes
   {
     name: "server-side rendering",
-    entry: './modules/routes/RootRoute.js',
+    entry: './src/routes/RootRoute.js',
     target: "node",
     output: {
-      path: path.join(__dirname, 'modules'),
+      path: path.join(__dirname, 'src'),
       filename: "server.routes.bundle.js",
       publicPath: './',
       libraryTarget: "commonjs2"

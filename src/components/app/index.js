@@ -11,6 +11,7 @@ export default class App extends React.Component {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/lazyload">Lazy Load</Link></li>
+          <li><Link to="/api">API</Link></li>
         </ul>
         {this.props.children}
       </div>
