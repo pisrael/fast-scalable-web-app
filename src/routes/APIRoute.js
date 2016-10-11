@@ -1,7 +1,10 @@
-import useApi from '../components/use-api'
 
 export default {
   path: 'api',
-  component: useApi
+  getComponents(nextState, cb) {
+    require.ensure([], function (require) {
+      cb(null, require('../components/use-api').default)
+    })
+  }
 }
 

@@ -1,7 +1,10 @@
-import LazyLoad from '../components/lazy-load'
 
 export default {
   path: 'lazyload',
-  component: LazyLoad
+  getComponents(nextState, cb) {
+    require.ensure([], function (require) {
+      cb(null, require('../components/lazy-load').default)
+    })
+  }
 }
 

@@ -13,7 +13,6 @@ module.exports = [
       chunkFilename: '[id].chunk.js',
       publicPath: '/'
     },
-
     module: {
       loaders: [
         {
