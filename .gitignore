@@ -1,5 +1,5 @@
 public
 node_modules
 .DS_Store
-src/*server.routes.bundle.js
+build
 .vscode

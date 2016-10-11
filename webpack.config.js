@@ -46,9 +46,9 @@ module.exports = [
     entry: './src/routes/RootRoute.js',
     target: "node",
     output: {
-      path: path.join(__dirname, 'src'),
+      path: path.join(__dirname, 'build'),
       filename: "server.routes.bundle.js",
-      publicPath: './',
+      publicPath: './build',
       libraryTarget: "commonjs2"
     },
     externals: /^[a-z\-0-9]+$/,

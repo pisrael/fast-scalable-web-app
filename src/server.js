@@ -6,7 +6,7 @@ const React = require('react')
 
 const ReactRouter = require('react-router')
 const handleServerRender = require('./handleServerRender')
-const pageRoutes = require('./server.routes.bundle').default;
+const pageRoutes = require('../build/server.routes.bundle').default;
 const apiRoutes = require('./api/routes')
 
 var app = express()
