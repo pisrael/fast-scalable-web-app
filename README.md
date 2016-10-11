@@ -8,11 +8,18 @@ The goal of this example is to provide a boilerplate ready for
 production, simultaneously taking advantage of ReactRouter, 
 server side rendering and code splitting to achieve this objective.
 
-The solution was created combining:
-* https://github.com/webpack/react-webpack-server-side-example
-* https://github.com/ryanflorence/example-react-router-server-rendering-lazy-routes
+Moreover, it uses Redux for controlling the state and sass for organizing
+the UI code. Components are broken into container components and presentational
+components.
 
+Container components can pre-fetch data on server rendering, by implementing the
+static method ```fetchData```. In the client, data is fetched by implementing
+```componentDidMount``` and requesting data to the server, or 3rd party API.
 
+To avoid delays caused by "above the fold" javascript, the javascript bundle
+transpiled with webpack is only applyied to the page after the page finishes
+rendering.
+ 
 For the server side, only the React modules are transpilled through Babel, 
 the server code is vanilla Node ES6 Javascript. This facilitates debugging
 through VSCode, as you can place breakpoints directly in your server code.
