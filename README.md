@@ -1,5 +1,5 @@
-React Router + Server Side Rendering + Code Splitting
-=====================================================
+React Router + Server Side Rendering + Code Splitting + Redux + SASS
+=====================================================================
 
 What I wanted to achieve here is:
 **Have a webapp that has SEO indexing and has a very short loading time on mobile devices with 3G connections**
